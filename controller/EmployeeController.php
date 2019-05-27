@@ -10,12 +10,12 @@ class EmployeeController{
     }
 
     function read(){
-        $json = $this->db->getJSON("SELECT * FROM employee");
+        $json = $this->db->executeToJSON("SELECT * FROM employee");
         return $json;
     }
 
     function readById($id = 0){ 
-        $json = $this->db->getJSON("SELECT * FROM employee WHERE id = $id");
+        $json = $this->db->executeToJSON("SELECT * FROM employee WHERE id = $id");
         return $json;
     }
 

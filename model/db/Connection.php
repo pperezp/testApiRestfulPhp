@@ -1,18 +1,16 @@
 <?php
+require_once("connectionVars.php");
+
 class Connection{
-	/* Database connection start */
-	private $servername = "localhost";
-	private $username = "root";
-	private $password = "";
-	private $dbname = "test";
+	
     private $con;
     
 	function __construct(){
 		$this->con = mysqli_connect(
-            $this->servername, 
-            $this->username, 
-            $this->password, 
-            $this->dbname
+            SERVER_NAME, 
+            USERNAME, 
+            PASSWORD, 
+            DB_NAME
         ) or die("Connection failed: " . mysqli_connect_error());
 
 		/* check connection */
@@ -26,7 +24,7 @@ class Connection{
 		return mysqli_query($this->con, $query);
 	}
 
-	function getJSON($query){
+	function executeToJSON($query){
 		$response = array();
 		$result = $this->execute($query);
 
